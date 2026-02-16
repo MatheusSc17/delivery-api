@@ -1,26 +1,58 @@
 [
   {
     "id": 1,
-    "cliente": "Novo Nome",
-    "produto": "Pizza de Calabresa",
+    "cliente": "João",
+    "produto": "Camarão",
     "valor": 50,
+    "entregue": true,
+    "status": "DELIVERED"
+  },
+  {
+    "id": 2,
+    "cliente": "Maria Oliveira",
+    "produto": "Rede de Pescador",
+    "valor": 320,
+    "entregue": false,
+    "status": "DISPATCHED"
+  },
+  {
+    "id": 3,
+    "cliente": "Carlos Souza",
+    "produto": "Camarão Coco Bambu",
+    "valor": 195,
     "entregue": false,
     "status": "CONFIRMED"
   },
   {
-    "id": 2,
-    "cliente": "Teste",
-    "produto": "Hambúrguer",
-    "valor": 10,
+    "id": 4,
+    "cliente": "Ana Costa",
+    "produto": "Peixe à Delícia",
+    "valor": 165,
     "entregue": false,
     "status": "RECEIVED"
   },
   {
-    "id": 3,
-    "cliente": "Teste",
-    "produto": "Hambúrguer",
-    "valor": 10,
+    "id": 5,
+    "cliente": "Ricardo Santos",
+    "produto": "Carne de Sol do Sertão",
+    "valor": 158,
     "entregue": false,
     "status": "RECEIVED"
+  },
+  {
+    "id": 6,
+    "cliente": "Fernanda Lima",
+    "produto": "Tapioca de Camarão",
+    "valor": 45,
+    "entregue": false,
+    "status": "CANCELED"
+  },
+  {
+    "id": 7,
+    "cliente": "Lucas Mendes",
+    "produto": "Cocada Mole com Sorvete",
+    "valor": 38,
+    "entregue": false,
+    "status": "CONFIRMED"
   }
 ]
