@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "cliente": "Novo Nome",
+    "produto": "Pizza de Calabresa",
+    "valor": 50,
+    "entregue": false,
+    "status": "CONFIRMED"
+  },
+  {
+    "id": 2,
+    "cliente": "Teste",
+    "produto": "Hambúrguer",
+    "valor": 10,
+    "entregue": false,
+    "status": "RECEIVED"
+  },
+  {
+    "id": 3,
+    "cliente": "Teste",
+    "produto": "Hambúrguer",
+    "valor": 10,
+    "entregue": false,
+    "status": "RECEIVED"
+  }
+]

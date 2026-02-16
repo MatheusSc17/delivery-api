@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coco Bambu - Gestão de Pedidos</title>
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --bg: #f8f9fa;
+            --text: #333;
+            --success: #2e7d32;
+            --warning: #ed6c02;
+            --info: #0288d1;
+            --danger: #d32f2f;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 40px; }
+        
+        .container { max-width: 1000px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg); padding-bottom: 20px; margin-bottom: 30px; }
+        
+        h1 { color: var(--primary); margin: 0; font-size: 24px; }
+        
+        .btn-refresh { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-refresh:hover { background: #b71c1c; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        
+        th { text-align: left; padding: 15px; border-bottom: 2px solid #eee; color: #666; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
+        
+        td { padding: 15px; border-bottom: 1px solid #eee; font-size: 14px; }
+
+        tr:hover { background-color: #fff9f9; }
+
+        /* Estilização Dinâmica dos Status */
+        .badge { padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+        
+        .status-received { background: #e3f2fd; color: var(--info); }
+        .status-confirmed { background: #fff4e5; color: var(--warning); }
+        .status-dispatched { background: #f3e5f5; color: #9c27b0; }
+        .status-delivered { background: #edf7ed; color: var(--success); }
+        .status-canceled { background: #fdeded; color: var(--danger); }
+
+        .price { font-weight: bold; color: #444; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📋 Painel de Pedidos Delivery</h1>
+        <button class="btn-refresh" onclick="carregarPedidos()">🔄 Atualizar Lista</button>
+    </header>
+
+    <table id="tabela-pedidos">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Valor</th>
+                <th>Status do Pedido</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+</div>
+
+<script>
+    const statusClasses = {
+        'RECEIVED': 'status-received',
+        'CONFIRMED': 'status-confirmed',
+        'DISPATCHED': 'status-dispatched',
+        'DELIVERED': 'status-delivered',
+        'CANCELED': 'status-canceled'
+    };
+
+    async function carregarPedidos() {
+        try {
+            const resposta = await fetch('http://localhost:3000/pedidos');
+            const pedidos = await resposta.json();
+            const corpoTabela = document.querySelector('#tabela-pedidos tbody');
+            
+            corpoTabela.innerHTML = pedidos.map(p => `
+                <tr>
+                    <td>#${p.id}</td>
+                    <td><strong>${p.cliente}</strong></td>
+                    <td>${p.produto}</td>
+                    <td class="price">R$ ${Number(p.valor).toFixed(2)}</td>
+                    <td>
+                        <span class="badge ${statusClasses[p.status] || ''}">
+                            ${p.status}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        } catch (error) {
+            console.error('Erro ao buscar pedidos:', error);
+            alert('Erro ao conectar com a API. Certifique-se que o servidor Node está rodando!');
+        }
+    }
+
+    // Carrega ao abrir a página
+    carregarPedidos();
+</script>
+
+</body>
+</html>
