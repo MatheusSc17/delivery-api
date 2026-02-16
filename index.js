@@ -144,11 +144,7 @@ app.delete('/pedidos/:id', (req, res) => {
 
 // Iniciando o servidor
 app.listen(PORT, () => {
-    // ... console logs ...
-});
-
-// Iniciando o servidor
-app.listen(PORT, () => {
     console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
     console.log(`Acesse http://localhost:3000/pedidos para ver seus dados!`);
+
 });
