@@ -1,64 +1,51 @@
-Delivery API 
+Delivery API - Desafio Técnico Coco Bambu
+Esta API foi desenvolvida para gerenciar o fluxo completo de pedidos de um sistema de delivery, desde o recebimento até a entrega final, garantindo a integridade dos dados através de uma máquina de estados.
 
-Esta é uma API desenvolvida para gerenciar pedidos de um sistema de delivery, permitindo o controle completo desde o recebimento até a entrega final.
+    Tecnologias Utilizadas
+Node.js: Ambiente de execução principal.
 
-Tecnologias Utilizadas
+Express: Framework para construção e gerenciamento das rotas da API.
 
-Node.js: Ambiente de execução.
+CORS: Middleware para permitir a comunicação entre o Frontend e a API.
 
+FS (File System): Utilizado para a persistência de dados em formato JSON.
 
-Express: Framework para construção das rotas da API.
-
-
-CORS: Middleware para permitir o acesso da interface gráfica.
-+1
-
-
-FS (File System): Para persistência de dados em arquivo JSON.
-+2
-
-📋 Como Executar o Projeto
+    Como Executar o Projeto
 Pré-requisitos
-Ter o Node.js instalado em sua máquina.
+Ter o Node.js instalado (Versão 18 ou superior recomendada).
 
 Passo a Passo
 Instalar dependências:
-No terminal da pasta do projeto, execute:
+No terminal, dentro da pasta do projeto, execute:
 
 Bash
 npm install
 Iniciar o servidor:
-Execute o comando:
+Ainda no terminal, execute:
 
 Bash
 node index.js
 Acessar a Interface:
-Abra o arquivo index.html diretamente no seu navegador para visualizar o painel de pedidos.
-+2
+Abra o arquivo index.html diretamente no seu navegador ou via Live Server para visualizar o painel de pedidos.
 
-🏗️ Arquitetura e Decisões
+    Arquitetura e Decisões Técnicas
+Persistência de Dados: Armazenamento em arquivo pedidos.json, garantindo que as informações persistam mesmo após o servidor ser reiniciado.
 
-Persistência: Os dados são armazenados no arquivo pedidos.json para garantir que as informações não sejam perdidas ao reiniciar o servidor.
-+1
+Máquina de Estados: Validação rigorosa das transições de status (ex: pedidos DELIVERED ou CANCELED tornam-se imutáveis), assegurando a integridade do processo.
 
+Interface Frontend: Painel visual desenvolvido em HTML/CSS para facilitar a gestão e o acompanhamento dos pedidos em tempo real.
 
-Máquina de Estados: O sistema valida rigorosamente as transições de status (ex: um pedido DELIVERED não pode ser cancelado) para garantir a integridade do processo de entrega.
-+1
+    Backlog de Desenvolvimento (Ordem de Execução)
+Configuração inicial do servidor Express e middlewares (CORS/JSON).
 
+Estruturação do arquivo de persistência pedidos.json.
 
-Interface: Foi desenvolvida uma página simples em HTML/CSS para facilitar a gestão visual dos pedidos em tempo real.
-+1
+Implementação das rotas de CRUD (Listar, Criar, Atualizar e Deletar).
 
-Backlog de Desenvolvimento
-Configuração inicial do servidor e middlewares (CORS/JSON).
+Desenvolvimento da lógica de transição da Máquina de Estados.
 
-Implementação das rotas CRUD (Listar, Criar, Editar, Deletar).
-+1
+Criação da interface gráfica para monitoramento dos pedidos.
 
-Desenvolvimento da lógica da Máquina de Estados.
+Conteinerização da aplicação utilizando Docker.
 
-Criação da interface gráfica para o usuário.
-+1
-
-Documentação do projeto.
-+2
+Documentação final do projeto.
